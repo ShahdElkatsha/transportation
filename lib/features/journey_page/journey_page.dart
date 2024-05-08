@@ -47,7 +47,7 @@ class JourneyPage extends StatelessWidget {
                     icon: Icon(Icons.menu_rounded, size: 11.w,), // Icon for drawer
                     onPressed: () {
                       // Open drawer
-                      Scaffold.of(context).openDrawer();
+                      Scaffold.of(context).openEndDrawer();
                     },
                   );
                 }
@@ -56,7 +56,7 @@ class JourneyPage extends StatelessWidget {
 
         ),
 
-        drawer: const DrawerScreen(),
+        endDrawer: const DrawerScreen(),
 
 
         body: Padding(
