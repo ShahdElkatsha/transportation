@@ -81,12 +81,20 @@ class HomeView extends StatelessWidget {
           SizedBox(height: 7.h,),
 
           //start point
-          CustomDropdownButton(hintText: 'Start Point', dropdownValue: 'Start Point', options:  ['Start Point','Tanta', 'Mansoura', 'Cairo', 'Alexandria']),
+          CustomDropdownButton(
+              hintText: 'Start Point',
+              dropdownValue: 'Start Point',
+              options:  ['Start Point','Tanta', 'Mansoura', 'Cairo', 'Alexandria']
+          ),
 
           SizedBox(height: 4.h,),
 
           //Destination
-          CustomDropdownButton(hintText: 'Destination', dropdownValue: 'Destination', options:  ['Destination','Mansoura', 'Alexandria', 'Tanta', 'Cairo']),
+          CustomDropdownButton(
+              hintText: 'Destination',
+              dropdownValue: 'Destination',
+              options:  ['Destination','Mansoura', 'Alexandria', 'Tanta', 'Cairo']
+          ),
 
 
           SizedBox(height:10.h,),
@@ -94,7 +102,6 @@ class HomeView extends StatelessWidget {
           //search container
           GestureDetector(
             onTap:(){
-
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SearchScreen()),
               );
@@ -115,7 +122,7 @@ class HomeView extends StatelessWidget {
               child: const Center(
                 child: Text(
                   "Search",
-                  style: TextStyle(color: mainColor, fontSize: 18),
+                  style: TextStyle(color: mainColor, fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

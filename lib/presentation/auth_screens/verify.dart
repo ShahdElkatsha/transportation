@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:transportation/features/auth_screens/reset_password.dart';
+import 'package:transportation/presentation/auth_screens/reset_password.dart';
+
 
 class Verify extends StatefulWidget {
   Verify({Key? key,

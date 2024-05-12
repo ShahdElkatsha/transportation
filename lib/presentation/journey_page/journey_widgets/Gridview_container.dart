@@ -1,3 +1,96 @@
+
+
+library globals;
+// import 'globals.dart' as globals;
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+
+
+class CustomGridviewContainer extends StatefulWidget {
+  CustomGridviewContainer({
+    Key? key,
+    required this.seatNum,
+    required this.reservedList,
+  }) : super(key: key);
+
+  final String seatNum;
+  final List<String> reservedList;
+
+
+
+  @override
+  State<CustomGridviewContainer> createState() =>
+      _CustomGridviewContainerState();
+}
+
+class _CustomGridviewContainerState extends State<CustomGridviewContainer> {
+  // Initialize variables to track the current color and click count
+  Color _containerColor = greyCustom; // Initialize with default grey color
+  Color _textColor = darkerColor; // Initialize with default darker color
+  String? selectedSeat;
+
+  // Function to handle container click
+  void _handleContainerClick() {
+    setState(() {
+      // Check if the current string is reserved
+      if (widget.reservedList.contains(widget.seatNum)) {
+        // If reserved, do not change the color
+        return;
+      }
+
+      // _containerColor = Color(0xffB47428);
+      // // Reset the color of all seats
+      // _resetColor();
+
+      // // Toggle the color between grey and darkerColor
+      _containerColor =
+      _containerColor == greyCustom ? Colors.amber : greyCustom;
+      // _textColor = _textColor == darkerColor ? greyCustom : darkerColor;
+    });
+  }
+
+  // // Function to reset the color of all seats
+  // void _resetColor() {
+  //   // _containerColor = widget.reservedList.contains(widget.seatNum) ? darkerColor : _containerColor;
+  //   // _textColor = widget.reservedList.contains(widget.seatNum) ? greyCustom : _textColor;
+  //   _containerColor = greyCustom;
+  //   _textColor = darkerColor;
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _handleContainerClick();
+        selectedSeat = widget.seatNum;
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: widget.reservedList.contains(widget.seatNum)
+              ? darkerColor
+              : _containerColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: const EdgeInsets.all(8),
+        child: Center(
+          child: Text(
+            widget.seatNum,
+            style: TextStyle(
+              color: widget.reservedList.contains(widget.seatNum)
+                  ? greyCustom
+                  : _textColor,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 //
 // import 'package:flutter/material.dart';
 //
@@ -128,95 +221,3 @@
 //
 // // i need to make the container that his string reserved don`t change when click
 //
-
-library globals;
-// import 'globals.dart' as globals;
-import 'package:flutter/material.dart';
-
-import '../../../constants.dart';
-
-
-class CustomGridviewContainer extends StatefulWidget {
-  CustomGridviewContainer({
-    Key? key,
-    required this.seatNum,
-    required this.reservedList,
-  }) : super(key: key);
-
-  final String seatNum;
-  final List<String> reservedList;
-
-
-
-
-
-  @override
-  State<CustomGridviewContainer> createState() =>
-      _CustomGridviewContainerState();
-}
-
-class _CustomGridviewContainerState extends State<CustomGridviewContainer> {
-  // Initialize variables to track the current color and click count
-  Color _containerColor = greyCustom; // Initialize with default grey color
-  Color _textColor = darkerColor; // Initialize with default darker color
-  String? selectedSeat;
-
-  // Function to handle container click
-  void _handleContainerClick() {
-    setState(() {
-      // Check if the current string is reserved
-      if (widget.reservedList.contains(widget.seatNum)) {
-        // If reserved, do not change the color
-        return;
-      }
-
-      // _containerColor = Color(0xffB47428);
-      // // Reset the color of all seats
-      // _resetColor();
-
-      // // Toggle the color between grey and darkerColor
-      _containerColor =
-      _containerColor == greyCustom ? Colors.amber : greyCustom;
-      // _textColor = _textColor == darkerColor ? greyCustom : darkerColor;
-    });
-  }
-
-  // // Function to reset the color of all seats
-  // void _resetColor() {
-  //   // _containerColor = widget.reservedList.contains(widget.seatNum) ? darkerColor : _containerColor;
-  //   // _textColor = widget.reservedList.contains(widget.seatNum) ? greyCustom : _textColor;
-  //   _containerColor = greyCustom;
-  //   _textColor = darkerColor;
-  // }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _handleContainerClick();
-        selectedSeat = widget.seatNum;
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: widget.reservedList.contains(widget.seatNum)
-              ? darkerColor
-              : _containerColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        padding: const EdgeInsets.all(8),
-        child: Center(
-          child: Text(
-            widget.seatNum,
-            style: TextStyle(
-              color: widget.reservedList.contains(widget.seatNum)
-                  ? greyCustom
-                  : _textColor,
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

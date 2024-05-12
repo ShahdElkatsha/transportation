@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:transportation/features/search_screen/search_widgets/search_Listview.dart';
-
+import 'package:transportation/presentation/search_screen/search_widgets/search_Listview.dart';
 import '../../constants.dart';
-// import '../constants.dart';
 import '../drawer/drawer_screen.dart';
 import '../main_page/home_screen.dart';
-// import '../features/drawer/drawer_screen.dart';
-// import '../drawer/drawer_screen.dart';
+
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-
 
     return Scaffold(
       backgroundColor: Colors.white,
