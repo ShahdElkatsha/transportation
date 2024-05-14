@@ -1,26 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:provider/provider.dart';
 import 'package:transportation/app_router.dart';
-import 'package:transportation/presentation/splash/splash_screen.dart';
+import 'features/Home/Data/Repos/home_repo_imp.dart';
+import 'features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
+import 'features/splash/splash_screen.dart';
 
 void main() {
-  runApp(Transportation(appRouter: AppRouter()));
+
+  // final AuthRepo authRepoImpl=AuthRepoImpl();
+  //
+  // final AuthManager authManager=AuthManager( authRepoImpl);
+
+  runApp(Transportation(
+    // appRouter: AppRouter(),
+    // authManager: authManager,
+  ));
 }
 
-class Transportation extends StatelessWidget {
-  final AppRouter appRouter;
+class Transportation extends StatefulWidget {
+  // final AppRouter appRouter;
+  // final AuthManager authManager;
 
-  const Transportation({Key? key, required this.appRouter}) : super(key: key);
+  const Transportation({Key? key,
+    // required this.appRouter,
+    // required this.authManager
+  }) : super(key: key);
 
   @override
+  State<Transportation> createState() => _TransportationState();
+}
+
+class _TransportationState extends State<Transportation> {
+  @override
   Widget build(BuildContext context) {
-    return FlutterSizer(
-      builder: (context, orientation, screenType) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-        onGenerateRoute: appRouter.generateRoute,
+    return
+      MultiBlocProvider(
+           providers:[
+      Provider<BusStopsCubit>.value(value: BusStopsCubit(homeRepoImpl())
+          ..getBusStops()
       ),
-    );
+    ],
+          child:
+
+     FlutterSizer(
+        builder: (context, orientation, screenType) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(),
+          // onGenerateRoute: widget.appRouter.generateRoute,
+        ),
+
+    )
+      );
   }
 }
 
