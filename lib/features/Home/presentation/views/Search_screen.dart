@@ -68,7 +68,7 @@ class SearchScreen extends StatelessWidget {
 
 
             //custom listview of buses
-            SearchListView(),
+            SearchListView(destinationName: 'Alexandria', startBusStopName: 'Tanta',),
 
 
             SizedBox(height: 6.h,),

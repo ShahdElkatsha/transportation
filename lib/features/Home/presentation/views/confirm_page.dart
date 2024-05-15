@@ -40,7 +40,18 @@ class ImageGallerySaver {
 }
 
 class ConfirmTicketPage extends StatefulWidget {
-  const ConfirmTicketPage({Key? key}) : super(key: key);
+   ConfirmTicketPage({Key? key,
+     required this.destinationName,
+     required this.startBusStopName,
+     required this.arrivalTime ,
+     required this.leavingTime,
+     required this.numberOfAvailableSeats}) : super(key: key);
+
+  late String? numberOfAvailableSeats ;
+  late String? destinationName;
+  late String? startBusStopName ;
+  late String leavingTime;
+  late String ?arrivalTime;
 
   @override
   State<ConfirmTicketPage> createState() => _ConfirmTicketPageState();
@@ -93,7 +104,13 @@ class _ConfirmTicketPageState extends State<ConfirmTicketPage> {
             SizedBox(height: 10.h),
             Screenshot(
               controller: screenshotController,
-              child: const CustomTicketContainer(),
+              child:  CustomTicketContainer(
+                destinationName: widget.destinationName,
+                startBusStopName: widget.startBusStopName,
+                arrivalTime: widget.arrivalTime,
+                leavingTime: widget.leavingTime,
+                numberOfAvailableSeats: widget.numberOfAvailableSeats,
+              ),
             ),
             SizedBox(height: 8.h),
             GestureDetector(

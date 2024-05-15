@@ -15,8 +15,8 @@ class DrawerScreen extends StatelessWidget {
           child: Column(
             children: [
 
-              SizedBox(height: 11.h,),
-              Image.asset('assets/drawer/accPhoto.png', height: 15.h, ),
+              SizedBox(height: 25.h,),
+              // Image.asset('assets/drawer/accPhoto.png', height: 15.h, ),
               SizedBox(height: 3.h,),
 
               //name

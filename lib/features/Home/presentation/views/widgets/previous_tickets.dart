@@ -49,15 +49,15 @@ class PreviousTicketsPage extends StatelessWidget {
           child: Column(
             children: [
 
-              const CustomTicketContainer(),
+               CustomTicketContainer(destinationName: 'Auxor', startBusStopName: 'Alexandria', arrivalTime: '14:00', leavingTime: '7:00', numberOfAvailableSeats: '19',),
 
               SizedBox(height: 2.h,),
 
-              const CustomTicketContainer(),
+              CustomTicketContainer(destinationName: 'Cairo', startBusStopName: 'Mansoura', arrivalTime: '17:00', leavingTime: '19:00', numberOfAvailableSeats: '05',),
 
               SizedBox(height: 2.h,),
 
-              const CustomTicketContainer(),
+              CustomTicketContainer(destinationName: 'Alexandria', startBusStopName: 'Tanta', arrivalTime: '10:00', leavingTime: '7:30', numberOfAvailableSeats: '25',),
             ],
           ),
         ),

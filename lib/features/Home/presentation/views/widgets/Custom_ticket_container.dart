@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 
 class CustomTicketContainer extends StatelessWidget {
-  const CustomTicketContainer({super.key});
+  CustomTicketContainer({required this.destinationName, required this.startBusStopName,required this.arrivalTime ,required this.leavingTime, required this.numberOfAvailableSeats });
+
+  late String? numberOfAvailableSeats ;
+  late String? destinationName;
+  late String? startBusStopName ;
+  late String leavingTime;
+  late String ?arrivalTime;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class CustomTicketContainer extends StatelessWidget {
                     children: [
                       SizedBox(width: 30.w,),
                       //start town
-                      Text('Mansoura',
+                      Text(startBusStopName!,
                         style: TextStyle(fontSize: 12, color: Color(0xffFFE2BF), fontWeight: FontWeight.bold),
                       ),
 
@@ -31,7 +37,7 @@ class CustomTicketContainer extends StatelessWidget {
                       SizedBox(width: 2.w,),
 
                       //end town
-                      Text('Tanta',
+                      Text(destinationName!,
                         style: TextStyle(fontSize: 12, color: Color(0xffFFE2BF), fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -55,7 +61,7 @@ class CustomTicketContainer extends StatelessWidget {
                       Icon(Icons.airline_seat_recline_normal_rounded, size: 23, color: Colors.white,),
                       SizedBox(width: 1.w,),
                       //seat num
-                      Text('seat ( 12 )',
+                      Text('seat ( $numberOfAvailableSeats )',
                         style: TextStyle(fontSize: 12, color:Colors.white, fontWeight: FontWeight.bold),
                       ),
                   ],),
@@ -67,7 +73,7 @@ class CustomTicketContainer extends StatelessWidget {
                       Icon(Icons.access_time, size: 23, color: Colors.white,),
                       SizedBox(width: 1.w,),
                       //end town
-                      Text('12:00 PM',
+                      Text(leavingTime,
                         style: TextStyle(fontSize: 12, color:Colors.white, fontWeight: FontWeight.bold),
                       ),
 

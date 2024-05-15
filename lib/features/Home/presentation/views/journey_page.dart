@@ -7,8 +7,13 @@ import 'package:transportation/core/constants.dart';
 
 
 class JourneyPage extends StatelessWidget {
-  const JourneyPage({super.key});
+  JourneyPage({required this.destinationName, required this.startBusStopName,required this.arrivalTime ,required this.leavingTime, required this.numberOfAvailableSeats });
 
+  late String? numberOfAvailableSeats ;
+  late String? destinationName;
+  late String? startBusStopName ;
+  late String leavingTime;
+  late String ?arrivalTime;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +87,7 @@ class JourneyPage extends StatelessWidget {
                           ),
                       ),
                       SizedBox(width: 5.w,),
-                      const Text("Tanta",
+                       Text(startBusStopName!,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xffB47428)
                         ),
@@ -103,7 +108,7 @@ class JourneyPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 5.w,),
-                      const Text("Mansoura",
+                       Text(destinationName!,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xffB47428)
                         ),
@@ -122,7 +127,7 @@ class JourneyPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 5.w,),
-                      const Text("12 PM",
+                       Text(leavingTime,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xffB47428)
                         ),
@@ -142,7 +147,7 @@ class JourneyPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 5.w,),
-                      const Text("2 PM",
+                       Text(arrivalTime!,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 19, color: Color(0xffB47428)
                         ),
@@ -169,7 +174,7 @@ class JourneyPage extends StatelessWidget {
 
               SizedBox(width: 5.w,),
               //num of seats
-              Text("16",
+              Text(numberOfAvailableSeats!,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 19, color: darkerColor
@@ -237,7 +242,14 @@ class JourneyPage extends StatelessWidget {
                 onTap:(){
 
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConfirmTicketPage()),
+                    MaterialPageRoute(builder: (context) =>  ConfirmTicketPage(
+                      destinationName: destinationName,
+                      startBusStopName: startBusStopName,
+                      arrivalTime: arrivalTime,
+                      leavingTime: leavingTime,
+                      numberOfAvailableSeats: numberOfAvailableSeats,
+                    )
+                    ),
                   );
                 },
                 child: Container(
