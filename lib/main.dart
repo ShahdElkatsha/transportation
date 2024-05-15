@@ -3,14 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:transportation/app_router.dart';
+import 'core/network/local_network.dart';
 import 'features/Home/Data/Repos/home_repo_imp.dart';
 import 'features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
+import 'features/auth_screens/auth_cubit/auth_cubit.dart';
 import 'features/splash/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheNetwork.cacheInitialization();
+  CacheNetwork.getCacheData(key: "token");
 
   // final AuthRepo authRepoImpl=AuthRepoImpl();
-  //
   // final AuthManager authManager=AuthManager( authRepoImpl);
 
   runApp(Transportation(
@@ -41,6 +45,7 @@ class _TransportationState extends State<Transportation> {
       Provider<BusStopsCubit>.value(value: BusStopsCubit(homeRepoImpl())
           ..getBusStops()
       ),
+             BlocProvider(create: (context)=>AuthCubit())
     ],
           child:
 

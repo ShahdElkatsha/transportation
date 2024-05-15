@@ -14,6 +14,8 @@ const mainColor = Colors.white;
 // final baseUrl = 'http://localhost:5086/';
 final baseUrl = 'http://10.0.2.2:5086/';
 
+String? token ;
+
 
 class AppPages{
   static const signinPath='/signIn';

@@ -1,3 +1,84 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:transportation/features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
+import 'package:transportation/features/Home/presentation/manager/BusStopCubit/bus_stop_states.dart';
+import '../../../../../core/constants.dart';
+
+class CustomDropdownButton extends StatefulWidget {
+  CustomDropdownButton({
+    Key? key,
+    required this.hintText,
+    required this.dropdownValue,
+  }) : super(key: key);
+
+  final String hintText;
+  String? dropdownValue;
+
+  @override
+  State<CustomDropdownButton> createState() => _CustomDropdownButtonState();
+}
+
+class _CustomDropdownButtonState extends State<CustomDropdownButton> {
+  @override
+  Widget build(BuildContext context) {
+    List<String> items=[];
+    return BlocBuilder<BusStopsCubit, BusStopState>(
+      builder: (context, state) {
+        if(state is BusStopSuccess)
+          {
+
+            items=state.items;
+          }
+        return SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+              color: lighterColor,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 4,
+                  blurRadius: 3,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
+            width: 75.w,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 4.w),
+              child: DropdownButton<String>(
+                value: widget.dropdownValue,
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    widget.dropdownValue = value!;
+                  });
+                },
+                style: const TextStyle(color: Colors.blue),
+                selectedItemBuilder: (BuildContext context) {
+
+                  return items.map((String value) {
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        widget.dropdownValue.toString(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    );
+                  }).toList();
+                },
+                items: items.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+
+
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_sizer/flutter_sizer.dart';
@@ -108,92 +189,6 @@
 // // ),
 // // );
 // // }
-
-
-
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:transportation/features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
-import 'package:transportation/features/Home/presentation/manager/BusStopCubit/bus_stop_states.dart';
-
-import '../../../../../core/constants.dart';
-import '../../../Data/Models/get_all_bus_stop.dart';
-
-class CustomDropdownButton extends StatefulWidget {
-  CustomDropdownButton({
-    Key? key,
-    required this.hintText,
-    required this.dropdownValue,
-  }) : super(key: key);
-
-  final String hintText;
-  String? dropdownValue;
-
-  @override
-  State<CustomDropdownButton> createState() => _CustomDropdownButtonState();
-}
-
-class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  @override
-  Widget build(BuildContext context) {
-    List<String> items=[];
-    return BlocBuilder<BusStopsCubit, BusStopState>(
-      builder: (context, state) {
-        if(state is BusStopSuccess)
-          {
-
-            items=state.items;
-          }
-        return SingleChildScrollView(
-          child: Container(
-            decoration: BoxDecoration(
-              color: lighterColor,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 4,
-                  blurRadius: 3,
-                  offset: Offset(0, 0),
-                ),
-              ],
-            ),
-            width: 75.w,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 4.w),
-              child: DropdownButton<String>(
-                value: widget.dropdownValue,
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  setState(() {
-                    widget.dropdownValue = value!;
-                  });
-                },
-                style: const TextStyle(color: Colors.blue),
-                selectedItemBuilder: (BuildContext context) {
-
-                  return items.map((String value) {
-                    return Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        widget.dropdownValue.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    );
-                  }).toList();
-                },
-                items: items.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-
-
-
-
 
 
 
