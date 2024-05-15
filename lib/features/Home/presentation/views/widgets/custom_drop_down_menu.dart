@@ -172,9 +172,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
                 },
                 style: const TextStyle(color: Colors.blue),
                 selectedItemBuilder: (BuildContext context) {
-                  // This is the widget that will be shown when you select an item.
-                  // Here custom text style, alignment and layout size can be applied
-                  // to selected item string.
+
                   return items.map((String value) {
                     return Align(
                       alignment: Alignment.centerLeft,

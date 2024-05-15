@@ -4,6 +4,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:transportation/features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
 import '../../../../core/constants.dart';
 import '../manager/BusStopCubit/bus_stop_states.dart';
+import 'Search_screen.dart';
 import 'drawer_screen.dart';
 import 'widgets/custom_drop_down_menu.dart';
 
@@ -12,7 +13,7 @@ import 'widgets/custom_drop_down_menu.dart';
 class HomeView extends StatelessWidget {
 
 
-  static List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+  // static List<String> list = <String>['One', 'Two', 'Three', 'Four'];
   // final ApiService apiService;
 
   @override
@@ -100,9 +101,9 @@ class HomeView extends StatelessWidget {
             GestureDetector(
               onTap:(){
                 // _fetchData();
-                // Navigator.push(context,
-                //   MaterialPageRoute(builder: (context) => const SearchScreen()),
-                // );
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SearchScreen()),
+                );
               },
               child: Container(
                 width: 40.w, height:6.h,
@@ -133,20 +134,5 @@ class HomeView extends StatelessWidget {
   }
 
 
-  // void _fetchData() {
-  //   // repository.fetchData();
-  // }
-//   void _fetchData() async {
-//     var result = await apiService.get(endPoint: 'api/UpcomingJourney/get-all-upcoming-journeys');
-//     result.fold(
-//           (failure) {
-//         // Handle failure
-//         print('Error: $failure');
-//       },
-//           (data) {
-//         // Handle successful response
-//         print('Data: $data');
-//       },
-//     );
-//   }
+
 }

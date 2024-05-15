@@ -6,11 +6,15 @@ import '../Models/destination_journeys.dart';
 import '../Models/get_all_bus_stop.dart';
 
 abstract class HomeRepo {
-   Future<Either<Failure,List<DestinationPoint>>> GetBussesByStartPointAndDestination(String start_point,String destination);
+   // Future<Either<Failure,List<DestinationPoint>>> GetBussesByStartPointAndDestination(String start_point,String destination);
+
+   Future<Either<Failure,List<Item>>> GetBussesByStartPointAndDestination(String destination,String start_point);
 
    Future<Either<Failure,List<DestinationPoint>>> GetPreviousTickets();
 
    Future<Either<Failure,List<Item>>> GetAllBusStops();
+
+
 
 }
 

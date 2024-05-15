@@ -5,17 +5,22 @@ import '../journey_page.dart';
 
 class SearchListView extends StatelessWidget {
    SearchListView({super.key});
-  var busTrips = ['Tanta','cairo','Alexadria','Aswan', 'Mansoura', 'Assuit'];
-
+   late List<String> startPointBusTrips = ['Tanta','cairo','Alexadria','Aswan', 'Mansoura', 'Assuit'];
+   late List<String> detinationBusTrips;
+   late int? numberOfAvailableTickets;
+   late String? destinationName;
+   late String? startBusStopName;
+   late String? leavingTime;
   @override
   Widget build(BuildContext context) {
     return SizedBox(width: 90.w,height: 70.h,
       child: ListView.separated(
         separatorBuilder: (BuildContext context, int index) => SizedBox(height: 2.5.h), // Adjust the height as needed
-        itemCount: busTrips.length,
+        itemCount: startPointBusTrips.length,
 
         itemBuilder: (context, index) {
-          final busTrip = busTrips[index]; // Get the current bus trip data
+          final startBusTrip = startPointBusTrips[index]; // Get the current bus trip data
+          final desBusTrip = startPointBusTrips[index];
 
 
 
@@ -53,14 +58,14 @@ class SearchListView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(//town
-                                busTrip,
+                                startBusTrip,
                                 // textDirection: TextDirection.ltr,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(color: mainColor,fontSize: 19, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(width:26.w),
                               Text(//town
-                                "12:00 Am",
+                                leavingTime!,
                                 textAlign: TextAlign.end,
                                 style: TextStyle(color: darkerColor,fontSize: 14, fontWeight: FontWeight.bold),
                               ),
@@ -76,14 +81,14 @@ class SearchListView extends StatelessWidget {
                             children: [
 
                               Text(//tickets
-                                "12 tickets remaining",
+                                "$numberOfAvailableTickets tickets remaining",
                                 textAlign: TextAlign.end,
                                 style: TextStyle(color: darkerColor,fontSize: 14, fontWeight: FontWeight.bold),
                               ),
 
                               // SizedBox(width:26.w),
                               Text(//town
-                                busTrip,
+                                desBusTrip,
                                 // textDirection: TextDirection.ltr,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(color: mainColor,fontSize: 19, fontWeight: FontWeight.bold),

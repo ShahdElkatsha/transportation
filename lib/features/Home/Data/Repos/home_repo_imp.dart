@@ -4,25 +4,43 @@ import 'package:transportation/core/constants.dart';
 import 'package:transportation/core/services/api/api_service.dart';
 import 'package:transportation/features/Home/Data/Models/destination_journeys.dart';
 import 'package:transportation/features/Home/Data/Repos/home_repo.dart';
-
 import '../../../../core/services/api/api_errors.dart';
 import '../Models/get_all_bus_stop.dart';
+import '../Models/start_destination_journeys.dart';
 
 class homeRepoImpl implements HomeRepo{
   final apiService=ApiService(baseUrl);
-  @override
-  Future<Either<Failure,List<DestinationPoint>>>  GetBussesByStartPointAndDestination(String start_point,String destination) async {
-    var result = await apiService.get(endPoint: 'api/BusStops/get-all/$start_point/$destination');
-   return result.fold(
-          (failure) {
-            return Left(failure);
-      },
+  // @override
+  // Future<Either<Failure,List<DestinationPoint>>>  GetBussesByStartPointAndDestination(String start_point,String destination) async {
+  //   var result = await apiService.get(endPoint: 'api/BusStops/get-all/$start_point/$destination');
+  //  return result.fold(
+  //         (failure) {
+  //           return Left(failure);
+  //     },
+  //         (response) {
+  //           return Right(StartDestinationJourney.fromJson(response) as List<DestinationPoint> );
+  //     },
+  //   );
+  //
+  // }
+
+
+  Future<Either<Failure, List<Item>>> GetBussesByStartPointAndDestination(String startPoint, String destination) async {
+    var result = await apiService.get(endPoint: 'api/UpcomingJourney/get-all-Nearest-upcoming-journey/$destination/$startPoint');
+    return result.fold(
+          (failure) => Left(failure),
           (response) {
-            return Right(DestinationPoint.fromJson(response) as List<DestinationPoint>);
+        var transportData = TransportData.fromJson(response);
+        var items = transportData.startDestinationJourney?.map((journey) => journey as Item).toList() ?? []; // Convert StartDestinationJourney to Item
+        return Right(items);
       },
     );
-
   }
+
+
+
+
+
 
   @override
   Future<Either<Failure, List<DestinationPoint>>> GetPreviousTickets() {
@@ -32,7 +50,7 @@ class homeRepoImpl implements HomeRepo{
 
   @override
   Future<Either<Failure, List<Item>>> GetAllBusStops() async {
-    var result = await apiService.get(endPoint: 'api/UpcomingJourney/get-all-upcoming-journeys');
+    var result = await apiService.get(endPoint: 'api/BusStops/get-all');
     return result.fold(
           (failure) {
         return Left(failure);
@@ -51,6 +69,8 @@ class homeRepoImpl implements HomeRepo{
       },
     );
   }
+
+
 
 
 }
