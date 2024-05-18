@@ -67,69 +67,71 @@ class HomeView extends StatelessWidget {
 
 
 
-      body: Column(
-          children: [
-
-            SizedBox(height: 5.h,),
-            //map photo
-            Center(
-                child: Image.asset('assets/map_photo.png', width: 60.w,)
-            ),
-
-            SizedBox(height: 7.h,),
-
-            //start point
-            CustomDropdownButton(
-                hintText: 'Start Point',
-                dropdownValue: 'StartPoint',
-                // options:  ['Start Point','Tanta', 'Mansoura', 'Cairo', 'Alexandria']
-            ),
-
-            SizedBox(height: 4.h,),
-
-            //Destination
-            CustomDropdownButton(
-                hintText: 'Destination',
-                dropdownValue: 'DestinationPoint',
-                // options:  ['Destination','Mansoura', 'Alexandria', 'Tanta', 'Cairo']
-            ),
-
-
-            SizedBox(height:10.h,),
-
-            //search container
-            GestureDetector(
-              onTap:(){
-                // _fetchData();
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SearchScreen()),
-                );
-              },
-              child: Container(
-                width: 40.w, height:6.h,
-                decoration: BoxDecoration(color: darkerColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 4,
-                        blurRadius: 3,
-                        offset: Offset(0, 3), // specify the offset from the container
-                      ),
-                    ],
-                ),
-                child: const Center(
-                  child: Text(
-                    "Search",
-                    style: TextStyle(color: mainColor, fontSize: 18, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Column(
+            children: [
+        
+              SizedBox(height: 5.h,),
+              //map photo
+              Center(
+                  child: Image.asset('assets/map_photo.png', width: 60.w,)
+              ),
+        
+              SizedBox(height: 7.h,),
+        
+              //start point
+              CustomDropdownButton(
+                  hintText: 'Start Point',
+                  dropdownValue: 'StartPoint',
+                  // options:  ['Start Point','Tanta', 'Mansoura', 'Cairo', 'Alexandria']
+              ),
+        
+              SizedBox(height: 4.h,),
+        
+              //Destination
+              CustomDropdownButton(
+                  hintText: 'Destination',
+                  dropdownValue: 'DestinationPoint',
+                  // options:  ['Destination','Mansoura', 'Alexandria', 'Tanta', 'Cairo']
+              ),
+        
+        
+              SizedBox(height:10.h,),
+        
+              //search container
+              GestureDetector(
+                onTap:(){
+                  // _fetchData();
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const SearchScreen()),
+                  );
+                },
+                child: Container(
+                  width: 40.w, height:6.h,
+                  decoration: BoxDecoration(color: darkerColor,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 4,
+                          blurRadius: 3,
+                          offset: Offset(0, 3), // specify the offset from the container
+                        ),
+                      ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Search",
+                      style: TextStyle(color: mainColor, fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
-            )
-
-
-          ],
-        ),
+              )
+        
+        
+            ],
+          ),
+      ),
     );
   }
 

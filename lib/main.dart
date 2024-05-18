@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:transportation/app_router.dart';
+import 'package:transportation/features/Home/presentation/views/home_screen.dart';
 import 'core/network/local_network.dart';
 import 'features/Home/Data/Repos/home_repo_imp.dart';
 import 'features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
@@ -52,7 +53,7 @@ class _TransportationState extends State<Transportation> {
      FlutterSizer(
         builder: (context, orientation, screenType) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: HomeView(),
           // onGenerateRoute: widget.appRouter.generateRoute,
         ),
 
