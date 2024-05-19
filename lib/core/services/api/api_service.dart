@@ -28,23 +28,25 @@ class ApiService  {
     }
   }
 
-  Future<Either<Failure, dynamic>> get({
+  Future<dynamic> get({
     required String endPoint,
     Map<String, dynamic>? body,
     Map<String, dynamic>? query,
     Options? options,
   }) async {
-    try {
+    // try {
       var response = await _dio.get(
         endPoint,
         data: body,
         queryParameters: query,
         options: options,
       );
-      return Right(response.data);
-    } on DioException catch (error) {
-      return Left(ServerFailure.handleNetworkErrorType(error));
-    }
+
+      return response.data;
+      // return Right(response.data);
+    // } on DioException catch (error) {
+    //   return Left(ServerFailure.handleNetworkErrorType(error));
+    // }
   }
   Future<Either<Failure, dynamic>> post({
     required String endPoint,

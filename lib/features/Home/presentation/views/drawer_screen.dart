@@ -21,7 +21,7 @@ class DrawerScreen extends StatelessWidget {
 
               //name
                Text(
-                'Name',
+                'Shahd',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,fontSize: 19
                 ),

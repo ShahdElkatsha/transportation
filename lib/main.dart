@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 // import 'package:transportation/app_router.dart';
-import 'package:transportation/features/Home/presentation/views/home_screen.dart';
 import 'core/network/local_network.dart';
 import 'features/Home/Data/Repos/home_repo_imp.dart';
 import 'features/Home/presentation/manager/BusStopCubit/bus_stop_cubit.dart';
@@ -14,6 +13,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheNetwork.cacheInitialization();
   CacheNetwork.getCacheData(key: "token");
+  Bloc.observer = MyBlocObserver();
+
 
   // final AuthRepo authRepoImpl=AuthRepoImpl();
   // final AuthManager authManager=AuthManager( authRepoImpl);
@@ -53,7 +54,7 @@ class _TransportationState extends State<Transportation> {
      FlutterSizer(
         builder: (context, orientation, screenType) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomeView(),
+          home: SplashScreen(),
           // onGenerateRoute: widget.appRouter.generateRoute,
         ),
 
@@ -62,3 +63,41 @@ class _TransportationState extends State<Transportation> {
   }
 }
 
+
+class MyBlocObserver extends BlocObserver {
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    print('onCreate -- ${bloc.runtimeType}');
+  }
+
+  @override
+  void onEvent(Bloc bloc, Object? event) {
+    super.onEvent(bloc, event);
+    print('onEvent -- ${bloc.runtimeType}, $event');
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    print('onChange -- ${bloc.runtimeType}, $change');
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print('onTransition -- ${bloc.runtimeType}, $transition');
+  }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    print('onError -- ${bloc.runtimeType}, $error');
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    print('onClose -- ${bloc.runtimeType}');
+  }
+}

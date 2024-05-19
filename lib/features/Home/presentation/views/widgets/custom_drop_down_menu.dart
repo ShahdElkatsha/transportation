@@ -29,17 +29,17 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> items = [];
+    List<String> items = ['Cairo','Tanta','Alexandria','Luxor','Aswan','Qena','Kafr elsheekh'];
 
     return BlocBuilder<BusStopsCubit, BusStopState>(
       builder: (context, state) {
-        if (state is BusStopLoading) {
-          return CircularProgressIndicator();
-        } else if (state is BusStopSuccess) {
-          items = state.items;
-        } else if (state is BusStopFailure) {
-          return Text('Failed to load bus stops', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),);
-        }
+        // if (state is BusStopLoading) {
+        //   return CircularProgressIndicator();
+        // } else if (state is BusStopSuccess) {
+        //   items = state.items;
+        // } else if (state is BusStopFailure) {
+        //   return Text('Failed to load bus stops', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),);
+        // }
 
         // Ensure that the dropdownValue is in the list of items
         if (widget.dropdownValue != null && !items.contains(widget.dropdownValue)) {
@@ -67,10 +67,10 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
                 value: widget.dropdownValue,
                 hint: Row(
                   children: [
-                    Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.white,
-                    ),
+                    // Icon(
+                    //   Icons.arrow_drop_down,
+                    //   color: Colors.white,
+                    // ),
                     SizedBox(width: 8),
                     Text(widget.hintText),
                   ],
@@ -94,10 +94,10 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
                       alignment: Alignment.centerLeft,
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.white,
-                          ),
+                          // Icon(
+                          //   Icons.arrow_drop_down,
+                          //   color: Colors.white,
+                          // ),
                           SizedBox(width: 8),
                           Text(
                             widget.dropdownValue ?? widget.hintText,
@@ -114,10 +114,10 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
                     value: value,
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                        ),
+                        // Icon(
+                        //   Icons.location_on,
+                        //   color: Colors.white,
+                        // ),
                         SizedBox(width: 8), // Add some space between the icon and the text
                         Text(value),
                       ],
@@ -129,10 +129,10 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
                     value: null,
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          color: Colors.white,
-                        ),
+                        // Icon(
+                        //   Icons.location_on,
+                        //   color: Colors.white,
+                        // ),
                         SizedBox(width: 8),
                         Text(widget.hintText),
                       ],
