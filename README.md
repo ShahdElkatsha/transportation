@@ -8,7 +8,7 @@ A Flutter project about transportation system among Egypt
 - app router
 - listView
 - gridView
-- screenShot widget
+- image gallery saver
 - mvvm pattern
 - dio
 - state management
