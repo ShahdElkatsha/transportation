@@ -1,10 +1,17 @@
 # transportation
 
-A new Flutter project.
+A Flutter project about transportation system among Egypt
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## In this project
+- drawer
+- dropDown menu
+- app router
+- listView
+- gridView
+- screenShot widget
+- mvvm pattern
+- dio
+- state management
 
 A few resources to get you started if this is your first Flutter project:
 
