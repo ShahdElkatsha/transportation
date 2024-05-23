@@ -3,15 +3,20 @@
 A Flutter project about transportation system among Egypt
 
 ## In this project
+- mvvm pattern
 - drawer
 - dropDown menu
 - app router
 - listView
 - gridView
 - image gallery saver
-- mvvm pattern
 - dio
 - state management
+- flutter bloc
+- dartz
+- flutter launcher icons
+- shared preferences
+- animated splash screen
 
 A few resources to get you started if this is your first Flutter project:
 
